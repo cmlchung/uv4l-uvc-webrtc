@@ -43,7 +43,7 @@ function signal(url, stream, onStream, onError, onClose, onMessage) {
             }
 
             pc.onicecandidate = function (event) {
-                if (event.candidate) {
+                if (event.candidate.candidate) {
                     var candidate = {
                         sdpMLineIndex: event.candidate.sdpMLineIndex,
                         sdpMid: event.candidate.sdpMid,
