@@ -9,6 +9,7 @@
         var video = document.getElementById('v');
         var canvas = document.getElementById('c');
         var ctx = canvas.getContext('2d');
+        var sound = document.getElementById('sound');
 
         start.addEventListener('click', function (e) {
             var address = document.getElementById('address').value;
@@ -87,6 +88,10 @@
                 signalObj.hangup();
                 signalObj = null;
             }
+        }, false);
+
+        sound.addEventListener('click', function (e) {
+            video.muted = !sound.checked;
         }, false);
 
         // Wait until the video stream can play

@@ -1,31 +1,34 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang="en">
     <head>
-        <meta charset='utf-8' />
+        <meta charset="utf-8" />
         <title>WebRTC</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <style>
             body {
-                margin-top:2%;
                 text-align:center;
                 color:#fff;
                 background-color:#122836;
             }
             #server {
                 display:block;
-                margin:0% auto 2%;
+                margin:0 auto 20px;
             }
             #start {
                 display:inline-block;
-                margin:0% auto 2%;
+                margin:0 auto 20px;
             }
             #start_mic {
                 display:inline-block;
-                margin:0% auto 2%;
+                margin:0 auto 20px;
             }
             #stop {
                 display:inline-block;
-                margin:0% auto 2%;
+                margin:0 auto 20px;
+            }
+            #sound {
+                display:inline-block;
+                margin:0 auto 20px;
             }
             video {
                 position:absolute;
@@ -43,9 +46,9 @@
             }
             button:active { background-color:#e44d26; }
         </style>
-        <script src='signalling.js'></script>
-        <script src='main.js'></script>
-        <script  type='text/javascript'>
+        <script src="signalling.js"></script>
+        <script src="main.js"></script>
+        <script type="text/javascript">
             var Module = {
                 preRun: [],
                 postRun: [],
@@ -64,14 +67,17 @@
 
     </head>
     <body>
-        <label id='server'>Web Service URL <input required type="text" id="address" value="" title="hostname (or IP address) and port of the UV4L WebRTC Web Service"/></label>
+        <label id="server">Web Service URL <input required type="text" id="address" value="" title="hostname (or IP address) and port of the UV4L WebRTC Web Service"/></label>
         <div>
-            <button id='start'>Start Streaming</button>
-            <button id='start_mic'>Start Streaming with Microphone</button>
-            <button id='stop'>Stop Streaming</button>
+            <button id="start">Start Streaming</button>
+            <button id="start_mic">Start Streaming with Microphone</button>
+            <button id="stop">Stop Streaming</button>
         </div>
-        <video id='v'></video>
-        <canvas id='c'></canvas>
+        <div>
+            <input id="sound" type="checkbox" checked> Sound
+        </div>
+        <video id="v"></video>
+        <canvas id="c"></canvas>
         <script>
             // Let's get a default address for the signalling server
             var address = document.getElementById('address').value;
