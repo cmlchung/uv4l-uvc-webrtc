@@ -7,8 +7,6 @@
         var start_mic = document.getElementById('start_mic');
         var stop = document.getElementById('stop');
         var video = document.getElementById('v');
-        var canvas = document.getElementById('c');
-        var ctx = canvas.getContext('2d');
         var sound = document.getElementById('sound');
 
         start.addEventListener('click', function (e) {
@@ -32,7 +30,6 @@
                             console.log('websocket closed. bye bye!');
                             video.srcObject = null;
                             //video.src = ''; // deprecated
-                            ctx.clearRect(0, 0, canvas.width, canvas.height);
                             isStreaming = false;
                         },
                         function (message) {
@@ -69,7 +66,6 @@
                                 console.log('websocket closed. bye bye!');
                                 video.srcObject = null;
                                 //video.src = ''; // deprecated
-                                ctx.clearRect(0, 0, canvas.width, canvas.height);
                                 isStreaming = false;
                             },
                             function (message) {
@@ -98,8 +94,6 @@
         video.addEventListener('canplay', function (e) {
             console.log('canplay');
             if (!isStreaming) {
-                canvas.setAttribute('width', video.videoWidth);
-                canvas.setAttribute('height', video.videoHeight);
                 isStreaming = true;
             }
         }, false);
@@ -107,16 +101,6 @@
         // Wait for the video to start to play
         video.addEventListener('play', function () {
             console.log('play');
-            // Every 33 milliseconds copy the video image to the canvas
-            setInterval(function () {
-                if (video.paused || video.ended) {
-                    return;
-                }
-                var w = canvas.getAttribute('width');
-                var h = canvas.getAttribute('height');
-                ctx.fillRect(0, 0, w, h);
-                ctx.drawImage(video, 0, 0, w, h);
-            }, 33);
         }, false);
     });
 })();

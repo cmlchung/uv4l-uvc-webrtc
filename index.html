@@ -11,30 +11,29 @@
                 background-color:#122836;
             }
             #server {
-                display:block;
+                display:none;
                 margin:0 auto 20px;
             }
             #start {
                 display:inline-block;
-                margin:0 auto 20px;
+                margin:20px auto 20px;
             }
             #start_mic {
                 display:inline-block;
-                margin:0 auto 20px;
+                margin:20px auto 20px;
             }
             #stop {
                 display:inline-block;
-                margin:0 auto 20px;
+                margin:20px auto 20px;
             }
             #sound {
                 display:inline-block;
                 margin:0 auto 20px;
             }
-            video {
-                position:absolute;
-                visibility:hidden;
+            #v {
+                width:640px;
+                height:480px;
             }
-            canvas { border:8px solid #fff;}
             button {
                 border:none;
                 display:block;
@@ -76,8 +75,7 @@
         <div>
             <input id="sound" type="checkbox" checked> Sound
         </div>
-        <video id="v"></video>
-        <canvas id="c"></canvas>
+        <video id="v" controls></video>
         <script>
             // Let's get a default address for the signalling server
             var address = document.getElementById('address').value;
